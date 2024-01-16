@@ -28,3 +28,4 @@ public class Ex14_PerfectNumber {
 		return 0;
 	}
 }
+int a = 0000000000;

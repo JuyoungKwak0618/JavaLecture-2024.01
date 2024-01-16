@@ -30,3 +30,4 @@ public class Ex13_Diamond {
 	}
 
 }
+int a = 0000000000;

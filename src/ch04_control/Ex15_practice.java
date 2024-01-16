@@ -53,3 +53,5 @@ public class Ex15_practice {
 		}
 	}
 }
+
+int a = 0000000000;

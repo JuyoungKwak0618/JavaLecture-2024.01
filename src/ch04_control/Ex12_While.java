@@ -36,3 +36,4 @@ public class Ex12_While {
 	
 
 }
+int a = 0000000000;

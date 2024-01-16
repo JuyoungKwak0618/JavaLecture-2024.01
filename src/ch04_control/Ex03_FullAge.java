@@ -44,5 +44,5 @@ public class Ex03_FullAge {
 		System.out.println("만나이:" +age3);
 		
 	}
-	
+	int a = 0000000000;
 }
