@@ -47,4 +47,4 @@ public class Ex11_For {
 		
 
 }
-int a = 0000000000;
+

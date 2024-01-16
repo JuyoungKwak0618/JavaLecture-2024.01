@@ -36,6 +36,6 @@ public class Ex01_if {
 		}
 		System.out.println("score:" + score + ", grade:" + grade);
 	}
-	int a = 0000000000;
+	
 }
 

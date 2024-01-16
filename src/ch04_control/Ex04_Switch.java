@@ -17,4 +17,3 @@ public class Ex04_Switch {
 	}
 
 }
-int a = 0000000000;

@@ -43,4 +43,3 @@ public class Ex05_Alarm {
 		
 	}
 }
-int a = 0000000000;
