@@ -1,6 +1,6 @@
 package ch02_type;
 
-public class EX03_TypeConversion {
+public class Ex03_TypeConversion {
 	
 	public static void main(String[] args) {
 		
