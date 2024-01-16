@@ -33,5 +33,6 @@ public class Ex03_TypeConversion {
 		double l = d + e;				// float + double
 		double m = a / b;				// int / int ==> truncate후 정수 ==> double
 		System.out.println("k: " + k + ", l: " + l + ", m: " + m);
+		int ppppppppppp=0;
 	}
 }
