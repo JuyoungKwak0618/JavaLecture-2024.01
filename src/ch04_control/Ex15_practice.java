@@ -1,5 +1,7 @@
 package ch04_control;
 
+import java.util.Scanner;
+
 public class Ex15_practice {
 
 	public static void main(String[] args) {
@@ -35,8 +37,8 @@ public class Ex15_practice {
 		System.out.println(grade + "학점");
 
 		// Q3.연습문제
-		for (int i = 0;; i++) {
-			if (i == 11) {
+		for (int i = 0; ; i++) {
+			if (i > 10) {
 				break;
 			}
 			if (i % 2 == 1) {
@@ -44,13 +46,36 @@ public class Ex15_practice {
 			}
 			System.out.println(i);
 		}
+		// Q4.연습문제
 		int k = 10;
-		while (k > 0) {
-
-			k -= 2;
-		
-		System.out.println(k);
+//		while (k > 0) {
+//
+//			k -= 2;
+//		
+//		System.out.println(k);
+//		}
+		while(true) {
+			k -=2;
+			System.out.println(k);
+			if(k < 0)
+				break;
 		}
+	
+	   // Q5.연습문제
+		int count = 0;
+		for(int i = 0; i < 5; i++) {
+			for (int j = 0; j < 3; j++) {
+				if ( i == 2)
+					continue;
+				if ( j == 1)
+					break;
+				System.out.println("A");
+				count++;
+			}
+		}
+		System.out.println(count+"회");
 	}
+
+
 }
 
