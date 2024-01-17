@@ -1,4 +1,4 @@
-package ch05.reference;
+package ch05_reference;
 
 public class Person {
 	private String name;

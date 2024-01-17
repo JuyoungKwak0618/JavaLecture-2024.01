@@ -1,4 +1,4 @@
-package ch05.reference;
+package ch05_reference;
 
 public class Ex11_String {
 

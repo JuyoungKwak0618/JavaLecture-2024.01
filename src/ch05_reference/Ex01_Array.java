@@ -1,4 +1,4 @@
-package ch05.reference;
+package ch05_reference;
 
 import java.util.Arrays;
 
