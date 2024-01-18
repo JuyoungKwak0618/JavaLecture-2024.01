@@ -69,6 +69,7 @@ public class Ex13_StringMethod2 {
 		System.out.println(cleanText + "," + cleanText.length());
 		
 		
+		
 			
 
 	}

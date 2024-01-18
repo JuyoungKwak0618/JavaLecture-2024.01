@@ -1,5 +1,6 @@
 package ch05_reference;
 
+import java.lang.reflect.Array;
 import java.util.Arrays;
 
 public class Ex99_practice {
@@ -65,10 +66,11 @@ public class Ex99_practice {
 	     String root = "C:/Workspace/WebProject/03.JavaScript/ch07.표준내장객체/04.String연습.js";
 		 
 		 String[] rootArr = root.split("/");
-		 
+		
 		System.out.println(rootArr[rootArr.length - 1]);
 		
 		int fileIndex = root.lastIndexOf('/');
+		
 		System.out.println(root.substring(fileIndex + 1));
 		System.out.println(root.substring(root.indexOf('4')-1));
 		 
