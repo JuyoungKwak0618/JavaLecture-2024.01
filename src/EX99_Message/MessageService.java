@@ -6,8 +6,11 @@ public interface MessageService {
 	Message findByMid(int mid);
 
 	void messageList();
+	
 
 	void messageListByWriter(String writer);
+	
+	Message messageListByWriter();
 
 	void insertMessage(Message message);
 

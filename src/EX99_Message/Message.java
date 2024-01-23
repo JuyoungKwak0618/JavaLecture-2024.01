@@ -9,6 +9,8 @@ public class Message {
 	private LocalDate genTime;
 	private int isDeleted;
 	
+
+			
 	public Message() { }
 	public Message(int mid, String content, String writer, LocalDate genTime) {
 		this.mid = mid;
