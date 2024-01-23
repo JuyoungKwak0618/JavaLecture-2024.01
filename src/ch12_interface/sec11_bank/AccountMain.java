@@ -5,11 +5,11 @@ import java.util.Scanner;
 public class AccountMain {
 	private static Account[] accountArray = new Account[100];
 	private static Scanner scan = new Scanner(System.in);
+	private static AccountService ac = new AccountImpl();
 
 	
 
 	public static void main(String[] args) {
-		AccountService ac = new AccountImpl();
 		
 		boolean run = true;
 	

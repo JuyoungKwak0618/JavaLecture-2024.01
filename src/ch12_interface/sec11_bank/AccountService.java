@@ -2,15 +2,14 @@ package ch12_interface.sec11_bank;
 
 public interface AccountService {
 
-	void createAccount(Account[] accountArray);
+	void createAccount(Account[] accountarray);
 	
-	void accountList(Account[] accountArray);
+	void accountList(Account[] accountarray);
 	
-	void deposit(Account[] accountArray);
+	void deposit(Account[] accountarray);
 	
-	void withdraw(Account[] accountArray);
+	void withdraw(Account[] accountarray);
 	
-	Account findAccount(String ano, Account[] accountArray);
+	Account findAccount(String ano, Account[] accountarray);
 
-	
 }
