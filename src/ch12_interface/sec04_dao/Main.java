@@ -1,29 +1,29 @@
 package ch12_interface.sec04_dao;
 
-import java.util.List;
+import java.util.*;
 
 public class Main {
 
 	public static void main(String[] args) {
-		// MYSQL DB를 사용하려면
+		// MySQL DB를 사용하려면
 		CustomerDao customerDao = new CustomerDaoMySQLImpl();
 		Customer customer = customerDao.getCustomer(34);
-		List<Customer>list = customerDao.getCustomerList();
+		List<Customer> list = customerDao.getCustomerList();
 		customerDao.insertCustomer(customer);
 		customerDao.updateCustomer(customer);
 		customerDao.deleteCustomer(34);
 		
-		// oracle DB를 사용하려면 
+		// Oracle DB를 사용하려면
 		customerDao = new CustomerDaoOracleImpl();
 		customer = customerDao.getCustomer(34);
-		list = customerDao.getCustomerList();
+		list =customerDao.getCustomerList();
 		customerDao.insertCustomer(customer);
 		customerDao.updateCustomer(customer);
 		customerDao.deleteCustomer(34);
 		
-		//SpringBoot에서 사용하는 경우
+		// SpringBoot에서 사용하는 경우
 //		@Autowired private CustomerDao customerDao;
-		// 프로그램이 실행될때 SpringBoot에서 CustomerDao 구현 객체를 주입시켜 줌
+		// 프로그램이 실행될때 SpringBoot 에서 CustomerDao 구현 객체를 주입시켜 줌
 	}
 
 }

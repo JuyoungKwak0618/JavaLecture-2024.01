@@ -1,10 +1,9 @@
-package ch10_oop.sec01_person;
+package ch10_oop.sec01_Person;
 
-public class Student  extends Person {
+public class Student extends Person {
 	int studentId;
 	
 	public void study() {
-		System.out.println(name + " 이/가 공부를 합니다.");
-		
+		System.out.println("공부를 합니다.");
 	}
 }

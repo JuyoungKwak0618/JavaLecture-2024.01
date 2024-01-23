@@ -7,6 +7,6 @@ public class A {
 	private int d;
 	
 	void abc() {
-		System.out.println(a + b + c + d); 		// a,b,c,d 모두 사용 가능
+		System.out.println(a +b+c+d);
 	}
 }

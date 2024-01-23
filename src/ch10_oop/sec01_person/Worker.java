@@ -1,9 +1,9 @@
-package ch10_oop.sec01_person;
+package ch10_oop.sec01_Person;
 
 public class Worker extends Person {
-	int workerId;
+	int workerID;
 	
 	void work() {
-		System.out.println(name + "이/가 열심히 일을 합니다.");
+		System.out.println("열심히 일을 합니다.");
 	}
 }

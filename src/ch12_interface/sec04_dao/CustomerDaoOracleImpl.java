@@ -19,19 +19,16 @@ public class CustomerDaoOracleImpl implements CustomerDao {
 	@Override
 	public void insertCustomer(Customer customer) {
 		System.out.println("Oracle: insertCustomer()");
-		
 	}
 
 	@Override
 	public void updateCustomer(Customer customer) {
 		System.out.println("Oracle: updateCustomer()");
-		
 	}
 
 	@Override
 	public void deleteCustomer(int cid) {
 		System.out.println("Oracle: deleteCustomer()");
-		
 	}
 
 }

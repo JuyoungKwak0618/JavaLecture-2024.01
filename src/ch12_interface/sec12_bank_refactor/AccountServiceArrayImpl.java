@@ -3,8 +3,7 @@ package ch12_interface.sec12_bank_refactor;
 import java.util.Scanner;
 
 
-
-public class AccountServiceArrayImpl implements AccountService {
+public class AccountServiceArrayImpl implements AccountService{
 	private static Account[] accountArray = new Account[100];
 	private static Scanner scan = new Scanner(System.in);
 	private static int index = 3;
@@ -15,15 +14,12 @@ public class AccountServiceArrayImpl implements AccountService {
 		accountArray[2] = new Account("1002", "브라이언", 2000000);
 	}
 	
-
-
-
 	@Override
 	public void createAccount() {
 		System.out.println("-----------");
 		System.out.println(" 계좌 생성");
 		System.out.println("-----------");
-		
+
 		String ano = "" + (1000 + index);		// index : 현재 빈 곳을 가리킴
 		System.out.print("계좌주 이름> ");
 		String owner = scan.nextLine();
@@ -32,6 +28,7 @@ public class AccountServiceArrayImpl implements AccountService {
 		Account account = new Account(ano, owner, balance);
 		accountArray[index++] = account;
 	}
+
 	@Override
 	public void accountList() {
 		System.out.println("-----------");
@@ -40,8 +37,9 @@ public class AccountServiceArrayImpl implements AccountService {
 		
 		for (int i = 0; i < index; i++) {
 			Account acc = accountArray[i];
-			if(acc.getisDeleted() == AccountService.DELETED)
+			if (acc.getIsDeleted() == AccountService.DELETED) {
 				continue;
+			}
 			System.out.printf("%s %-6s\t%,10d%n", acc.getAno(), acc.getOwner(), acc.getBalance());
 		}
 	}
@@ -93,14 +91,11 @@ public class AccountServiceArrayImpl implements AccountService {
 		for (Account acc: accountArray) {
 			if (acc == null)
 				return null;
-			if (ano.equals(acc.getAno()) && acc.getisDeleted() != AccountService.DELETED)
+			if (ano.equals(acc.getAno()) && acc.getIsDeleted() != AccountService.DELETED)
 				return acc;
 		}
 		return null;
 	}
-
-
-
 
 	@Override
 	public void delete() {
@@ -110,10 +105,8 @@ public class AccountServiceArrayImpl implements AccountService {
 
 		System.out.print("계좌 번호> ");
 		String ano = scan.nextLine();
+		
 		Account account = findAccount(ano);
-		account.setisDeleted(AccountService.DELETED);
-		
-		
+		account.setIsDeleted(AccountService.DELETED);
 	}
-
 }

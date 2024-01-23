@@ -8,9 +8,11 @@ public class CustomerMain {
 		
 		Customer maria = new Customer(2, "마리아", 23, true);
 		
-		Customer brian = new Customer(3, "브라이언",17);
+		Customer brian = new Customer(3, "브라이언", 17);
 		
-		System.out.println(james); System.out.println(maria); System.out.println(brian);
+		System.out.println(james);
+		System.out.println(maria);
+		System.out.println(brian);
 	}
 
 }

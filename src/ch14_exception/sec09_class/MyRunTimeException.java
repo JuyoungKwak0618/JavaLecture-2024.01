@@ -1,13 +1,13 @@
 package ch14_exception.sec09_class;
 
-public class MyRunTimeException extends RuntimeException{
 
-	public MyRunTimeException() {
+public class MyRuntimeException extends RuntimeException {
+
+	public MyRuntimeException() {
 	}
-	
-	public MyRunTimeException(String message) {
+
+	public MyRuntimeException(String message) {
 		super(message);
-	
 	}
 
 }

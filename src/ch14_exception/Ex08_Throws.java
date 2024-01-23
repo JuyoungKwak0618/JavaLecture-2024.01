@@ -7,14 +7,12 @@ public class Ex08_Throws {
 //			findClass();
 //		} catch (ClassNotFoundException e) {
 //			e.printStackTrace();
-//			System.out.println("클래스를 찾지 못하였습니다.");
+//			System.out.println("클래스를 찾지 못했습니다.");
 //		}
 		findClass();
-	
 	}
 	
-	static void findClass() throws ClassNotFoundException{
+	static void findClass() throws ClassNotFoundException {
 		Class clazz = Class.forName("java.lang.String2");
 	}
-
 }
