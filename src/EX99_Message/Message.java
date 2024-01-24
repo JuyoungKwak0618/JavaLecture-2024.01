@@ -1,31 +1,55 @@
 package EX99_Message;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 public class Message {
 	private int mid;
 	private String content;
 	private String writer;
-	private LocalDate genTime;
+	private LocalDateTime genTime;
 	private int isDeleted;
 	
 
 			
 	public Message() { }
-	public Message(int mid, String content, String writer, LocalDate genTime) {
+	
+	// for Insert
+	public Message(String content, String writer) {
+		this.content = content;
+		this.writer = writer;
+	}
+	
+	// for Update
+	public Message(int mid, String content, String writer) {
+	
+		this.mid = mid;
+		this.content = content;
+		this.writer = writer;
+	}
+	// for Read
+	public Message(int mid, String content, String writer, LocalDateTime genTime) {
 		this.mid = mid;
 		this.content = content;
 		this.writer = writer;
 		this.genTime = genTime;
 	}
-	public Message(int mid, String content, String writer, LocalDate genTime, int isDeleted) {
+
+	public Message(int mid, String content, String writer, LocalDateTime genTime, int isDeleted) {
 		this.mid = mid;
 		this.content = content;
 		this.writer = writer;
 		this.genTime = genTime;
 		this.isDeleted = isDeleted;
 	}
-
+	
+	
+	@Override
+	public String toString() {
+		return String.format("%d %s %s %s", mid, content, writer, genTime.toString().replaceAll("T", " ").substring(0,16));
+		
+//		return "Message [mid=" + mid + ", content=" + content + ", writer=" + writer + ", genTime=" + genTime
+//				+ ", isDeleted=" + isDeleted + "]";
+	}
 
 	public int getMid() {
 		return mid;
@@ -57,12 +81,12 @@ public class Message {
 	}
 
 
-	public LocalDate getGenTime() {
+	public LocalDateTime getGenTime() {
 		return genTime;
 	}
 
 
-	public void setGenTime(LocalDate genTime) {
+	public void setGenTime(LocalDateTime genTime) {
 		this.genTime = genTime;
 	}
 

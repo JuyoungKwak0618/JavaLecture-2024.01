@@ -1,11 +1,12 @@
-package EX99_Message;
+package ch17_collectionpart1_list.sec03_Message;
 
+import java.util.List;
 import java.util.Scanner;
 
 public class MessageMain {
-	private static MessageService messageService = new MessageServiceArrayImpl();
+	private static MessageService messageService = new MessageServiceListImpl();
 	private static Scanner scan = new Scanner(System.in);
-
+	
 	public static void main(String[] args) {
 		String writer = null, content = null;
 		Message message = null;
@@ -21,7 +22,7 @@ public class MessageMain {
 			int selectNo = Integer.parseInt(scan.nextLine());
 			switch(selectNo) {
 			case 1:
-				messageService.messageList(); 
+				messageService.getMessageListAll();
 				break;
 			case 2:
 				System.out.println("---------------");
@@ -29,7 +30,7 @@ public class MessageMain {
 				System.out.println("---------------");
 				System.out.print("Writer 이름> ");
 				writer = scan.nextLine();
-				messageService.messageListByWriter(writer); 
+				messageService.getMessageListByWriter(writer);
 				break;
 			case 3:
 				System.out.println("---------------");
@@ -74,5 +75,7 @@ public class MessageMain {
 		}
 		System.out.println("프로그램 종료");
 	}
+	}
+	
+	
 
-}
