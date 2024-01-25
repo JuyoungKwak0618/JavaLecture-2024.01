@@ -3,8 +3,8 @@ package ch17_collection.part5_practice;
 import java.util.Objects;
 
 public class Student {
-	int studentNum;
-	private String name;
+	public int studentNum;
+	public String name;
 	
 	public Student(int studentNum, String name) {
 		
@@ -22,8 +22,8 @@ public class Student {
 		if (obj instanceof Student) {
 			Student s = (Student) obj;
 			return s.studentNum ==  this.studentNum;
-		}else
+		}else {
 		return false;
+		}
 	}
-	
 }

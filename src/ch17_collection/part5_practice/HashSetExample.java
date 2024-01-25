@@ -16,7 +16,7 @@ public class HashSetExample {
 		Iterator<Student> iterator = set.iterator();
 		while(iterator.hasNext()) {
 			Student student = iterator.next();
-			System.out.println(student.studentNum + ":" + student.name);
+			System.out.println(student.studentNum + " : " + student.name);
 		}
 	}
 
