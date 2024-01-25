@@ -1,15 +1,24 @@
-package ch17_collectionpart1_list.sec05_Member;
+package ch17_collection.part1_list.sec05_member;
 
 public class Member {
 	private int age;
 	private String name;
-	private String gender;			// "남" , "여"
+	private String gender;		// "남", "여"
 	
 	public Member() { }
 	public Member(int age, String name, String gender) {
 		this.age = age;
 		this.name = name;
 		this.gender = gender;
+	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		if (obj instanceof Member) {
+			Member m = (Member) obj;
+			return this.name.equals(m.getName());
+		}
+		return false;
 	}
 	
 	@Override
@@ -35,15 +44,4 @@ public class Member {
 	public void setGender(String gender) {
 		this.gender = gender;
 	}
-	
-	@Override
-	public boolean equals(Object obj) {
-		if (obj instanceof Member) {
-			Member m = (Member) obj;
-			return this.name.equals(m.getName());
-		}
-		return false;
-	}
-	
-	
 }

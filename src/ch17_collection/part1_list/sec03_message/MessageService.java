@@ -1,4 +1,4 @@
-package ch17_collectionpart1_list.sec03_Message;
+package ch17_collection.part1_list.sec03_message;
 
 import java.util.List;
 
@@ -16,6 +16,5 @@ public interface MessageService {
 	void updateMessage(Message message);
 	
 	void deleteMessage(int mid);
-	
 	
 }
