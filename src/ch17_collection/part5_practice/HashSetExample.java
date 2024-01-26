@@ -18,6 +18,7 @@ public class HashSetExample {
 			Student student = iterator.next();
 			System.out.println(student.studentNum + " : " + student.name);
 		}
+	
 	}
 
 }

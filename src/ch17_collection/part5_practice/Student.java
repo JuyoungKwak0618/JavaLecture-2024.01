@@ -14,7 +14,7 @@ public class Student {
 
 	@Override
 	public int hashCode() {
-		 return Objects.hash(studentNum);
+		 return Objects.hash(studentNum);			//return studentNum;
 	}
 
 	@Override
