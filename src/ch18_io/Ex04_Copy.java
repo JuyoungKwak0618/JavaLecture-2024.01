@@ -1,4 +1,4 @@
-package ch13_io;
+package ch18_io;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
