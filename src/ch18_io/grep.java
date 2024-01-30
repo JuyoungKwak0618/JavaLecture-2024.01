@@ -10,10 +10,10 @@ public class grep {
     public static void main(String[] args) {
         // 검색할 파일 경로 및 정규 표현식 패턴
         String filePath = "C:/Users/human-13/Desktop/memo.txt"; // 생성한 텍스트 파일의 경로로 변경
-        int aaa = 5; // 찾고자 하는 패턴으로 변경
-        String aca = Integer.toString(aaa);
+        String a = "A"; // 찾고자 하는 패턴으로 변경
+      
         // 정규 표현식 패턴 컴파일
-        Pattern pattern = Pattern.compile(aca);
+        Pattern pattern = Pattern.compile(a);
 
         try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
             String line;
