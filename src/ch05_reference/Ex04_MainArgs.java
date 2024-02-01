@@ -11,5 +11,7 @@ public class Ex04_MainArgs {
 		command = "git  commit	 -m \"Reference Type\"".split("\\s+"); // 공백(white space) 여러개로 분리
 		System.out.println(Arrays.toString(command));
 		
+		
+		
 	}
 }
