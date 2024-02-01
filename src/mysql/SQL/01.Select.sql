@@ -169,3 +169,26 @@ SELECT Continent, r.Name countryName, l.Name cityName, l.Population FROM city l
 	INNER JOIN country r
 	ON l.CountryCode=r.code
 	WHERE l.Population > 8000000;
+
+# 아시아 대륙에서 인구수가 많은 도시 TOP 10
+SELECT Continent, r.Name countryName, l.Name cityName, l.Population FROM city l
+	JOIN country r
+	ON l.CountryCode = r.Code
+	WHERE r.Continent='Asia'
+	ORDER BY l.Population desc
+	LIMIT 10;
+
+# 아시아 국가의 국가명과 공식언어
+SELECT l.name,r.`Language` FROM country l
+	JOIN countrylanguage r
+	ON l.Code = r.CountryCode
+	WHERE l.Continent = 'Asia' AND r.IsOfficial= 'T';
+
+# 3개의 테이블 조인
+# 아시아 대륙에서 인구수가 가장 많은 TOP 10 도시에서 사용하는 공식언어
+SELECT r.Name countryName, l.Name cityName, o.`Language`, l.Population  FROM city l
+	JOIN country r ON l.CountryCode= r.code
+	JOIN countrylanguage o ON l.CountryCode = o.CountryCode
+	WHERE r.Continent = 'Asia' AND o.IsOfficial = 'T'
+	ORDER  BY l.Population DESC
+	LIMIT 10;
