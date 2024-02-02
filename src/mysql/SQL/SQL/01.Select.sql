@@ -96,6 +96,7 @@ Select count(*) FROM city WHERE countrycode='KOR';
 # 최대, 최소 - 국내 도시 중 인구수 최대, 최소 도시를
 SELECT MAX(population), MIN(population) FROM city WHERE countrycode= 'KOR';
 
+
 #국내 도시의 인구 평균
 SELECT ROUND(AVG(population)) FROM city WHERE countrycode= 'KOR';
 
@@ -192,3 +193,10 @@ SELECT r.Name countryName, l.Name cityName, o.`Language`, l.Population  FROM cit
 	WHERE r.Continent = 'Asia' AND o.IsOfficial = 'T'
 	ORDER  BY l.Population DESC
 	LIMIT 10;
+
+/*
+*   1.8 Sub Query
+*/
+# 국내 도시만으로 새로운 테이블을 만드는 경우
+CREATE TABLE IF NOT EXISTS kcity LIKE city;
+INSERT INTO kcity SELECT * FROM city WHERE countrycode = 'KOR';
