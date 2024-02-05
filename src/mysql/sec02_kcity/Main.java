@@ -26,7 +26,7 @@ public class Main {
 		city.setPopulation(500000);
 		cityDao.updateCity(city);
 		
-		cityDao.deleteCity(2403);
+		cityDao.deleteCity(2396);
 		
 		list = cityDao.getCityByDistrict("kyonggi");
 		list.forEach(x -> System.out.println(x));
