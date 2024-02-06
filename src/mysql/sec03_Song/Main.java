@@ -15,11 +15,11 @@ public class Main {
 		System.out.println(song);
 		System.out.println("==========================================================");
 		
-		 song = new Song("비의랩소디","떠나가요 아주 먼 곳으로");
-//		 songDao.insertSong(song);
+		 song = new Song("하입보이","하하하하 하이보이");
+		 songDao.insertSong(song);
 
 		 
-		 song = songDao.getSongbySid(116);
+		 song = songDao.getSongbySid(135);
 		 song.setTitle("Love wins all");
 		 song.setLyrics("Dearest, Darling, My universe");
 		 songDao.updateSong(song);
