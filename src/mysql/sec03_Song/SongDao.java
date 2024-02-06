@@ -14,6 +14,7 @@ public class SongDao {
 	private String ConnStr;
 	private String user;
 	private String password;
+	private Connection conn;
 
 	public SongDao() {
 		String path = "C:/Workspace/Java/lesson/src/mysql/mysql.Properties";
@@ -27,24 +28,32 @@ public class SongDao {
 			this.ConnStr = "jdbc:mysql://" + host + ":" + port + "/" + database;
 			this.user = prop.getProperty("user");
 			this.password = prop.getProperty("password");
+			this.conn = DriverManager.getConnection(ConnStr, user, password);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
 
-	private Connection myConnection() {
-		Connection conn = null;
+//	private Connection myConnection() {
+//		Connection conn = null;
+//		try {
+//			conn = DriverManager.getConnection(ConnStr, user, password);
+//
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
+//		return conn;
+//	}
+	public void close() {
 		try {
-			conn = DriverManager.getConnection(ConnStr, user, password);
-
+			this.conn.close();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return conn;
 	}
 	
 	public Song getSongbySid(int sid) {
-		Connection conn = myConnection();
+//		Connection conn = myConnection();
 		String sql = "select * from song where sid=?";
 		Song song = new Song();
 		try {
@@ -57,7 +66,7 @@ public class SongDao {
 				song.setTitle(rs.getString(2));
 				song.setLyrics(rs.getString(3));
 			}
-			rs.close(); pstmt.close(); conn.close();
+			rs.close(); pstmt.close(); // conn.close();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -65,17 +74,17 @@ public class SongDao {
 	}
 	
 	public Song getSongbyTitle(String title) {
-		Connection conn = myConnection();
-		String sql = "select * from song where title=?";
+//		Connection conn = myConnection();
+		String sql = "select * from song where title like ?";
 		Song song = null;
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, title);
+			pstmt.setString(1, "%" + title + "%");			// %별빛% - 제목에 별빛 검색
 			ResultSet rs = pstmt.executeQuery();
 			while(rs.next()) {
 				song = new Song(rs.getInt(1), rs.getString(2), rs.getString(3));
 			}
-			rs.close(); pstmt.close(); conn.close();
+			rs.close(); pstmt.close(); // conn.close();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -83,7 +92,7 @@ public class SongDao {
 	}
 	
 	public List<Song> getSongListAll() {
-		Connection conn = myConnection();
+//		Connection conn = myConnection();
 		String sql = "select * from song";
 		List<Song> list = new ArrayList<Song>();
 		
@@ -94,7 +103,7 @@ public class SongDao {
 				Song song = new Song(rs.getInt(1), rs.getString(2), rs.getString(3));
 				list.add(song);
 			}
-			rs.close(); stmt.close(); conn.close();
+			rs.close(); stmt.close(); // conn.close();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -102,7 +111,7 @@ public class SongDao {
 	}
 	
 	public void insertSong(Song song) {
-		Connection conn = myConnection();
+//		Connection conn = myConnection();
 		String sql = "insert into song values(default, ?, ?)";
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(sql);
@@ -111,7 +120,7 @@ public class SongDao {
 			
 			pstmt.executeUpdate();
 			
-			pstmt.close(); conn.close();
+			pstmt.close(); // conn.close();
 			
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -119,7 +128,7 @@ public class SongDao {
 	}
 	
 	public void updateSong(Song song) {
-		Connection conn = myConnection();
+//		Connection conn = myConnection();
 		String sql = "update song set title=?, lyrics=? where sid=?";
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(sql);
@@ -129,14 +138,14 @@ public class SongDao {
 			
 			pstmt.executeUpdate();
 			
-			pstmt.close(); conn.close();
+			pstmt.close(); // conn.close();
 			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
 	public void delete(int sid) {
-		Connection conn = myConnection();
+//		Connection conn = myConnection();
 		String sql = "delete from song where sid=?";
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(sql);
@@ -144,7 +153,7 @@ public class SongDao {
 			
 			pstmt.executeUpdate();
 			
-			pstmt.close(); conn.close();
+			pstmt.close(); // conn.close();
 			
 		} catch (Exception e) {
 			e.printStackTrace();
