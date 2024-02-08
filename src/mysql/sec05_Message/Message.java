@@ -41,7 +41,7 @@ public class Message {
 		return String.format("%d  %s  %s  %s", mid, content, writer, 
 							modTime.toString().replaceAll("T", " ").substring(0, 16));
 //		return "Message [mid=" + mid + ", content=" + content + ", writer=" + writer 
-//				+ ", modTime=" + modTime.toString().substring(0, 19).replace("T", " ")
+//			+ ", modTime=" + modTime.toString().substring(0, 19).replace("T", " ")
 //				+ ", isDeleted=" + isDeleted + "]";
 	}
 	

@@ -1,4 +1,4 @@
-package mysql.sec05_Message;
+package mysql.sec07_bbs.dao;
 
 import java.io.FileInputStream;
 import java.sql.Connection;
@@ -12,18 +12,16 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 
-import javax.swing.text.AbstractDocument.Content;
+import mysql.sec07_bbs.entity.User;
 
-import mysql.sec03_Song.Song;
-
-public class MessageDao {
+public class UserDao {
 	private String ConnStr;
 	private String user;
 	private String password;
 	private Connection conn;
 
-	public MessageDao() {
-		String path = "C:/Workspace/Java/lesson/src/mysql/mysql.Properties";
+	public UserDao() {
+		String path = "C:/Workspace/Java/lesson/src/mysql/sec07_bbs/mysql.Properties";
 		try {
 			Properties prop = new Properties();
 			prop.load(new FileInputStream(path));
@@ -48,39 +46,38 @@ public class MessageDao {
 		}
 	}
 	
-	public Message getMessageByMid(int mid) {
-		String sql = "select * from  message where mid=?";
-		Message msg = new Message();
+	public User getUserByUid(String uid) {
+		String sql = "select * from users where uid=?";
+		User user = null;
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1,mid);
+			pstmt.setString(1, uid);
 			ResultSet rs = pstmt.executeQuery();
 			while(rs.next()) {
-				msg.setMid(rs.getInt(1));
-				msg.setContent(rs.getString(2));
-				msg.setWriter(rs.getString(3));
-				String modTime = rs.getString(4);		// 2024-02-06 16:45:00.5
-				msg.setModTime(LocalDateTime.parse(modTime.replace(" ", "T")));
-				msg.setIsDeleted(rs.getInt(5));
+					user = new User(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4),
+						LocalDate.parse(rs.getString(5)), rs.getInt(6));
 			}
-			rs.close(); pstmt.close();
+			rs.close(); pstmt.close(); 
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return msg;
+		return user;
 	}
-
-	public List<Message> getMessageListByWriter(String writer) {
-		String sql = "select * from  message where writer like ? and isDeleted=0";
-		List<Message> list = new ArrayList<Message>();
+	
+	public List<User> getUserList(int num, int offset) {
+		String sql = "select * from users where isDeleted=0"
+					 + " order by regDate desc, uid limit ? offset ?";
+		List<User> list = new ArrayList<User>();
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, writer);
+			pstmt.setInt(1, num);
+			pstmt.setInt(2, offset);
 			ResultSet rs = pstmt.executeQuery();
 			while(rs.next()) {
-				Message msg = new Message(rs.getInt(1),rs.getString(2),rs.getString(3),
-						LocalDateTime.parse(rs.getString(4).replace(" ", "T")),rs.getInt(5));
-				list.add(msg);
+				User user = new User(rs.getString(1),rs.getString(2),rs.getString(3),
+						rs.getString(4),LocalDate.parse(rs.getString(5)),rs.getInt(6));
+				list.add(user);
 			}
 			rs.close(); pstmt.close();
 		} catch (Exception e) {
@@ -89,29 +86,14 @@ public class MessageDao {
 		return list;
 	}
 	
-	public void insertMessage(Message msg) {
-		String sql = "insert message values(default, ?, ?, default, default)";
+	public void insertUser(User user) {
+		String sql = "insert users values (?, ?, ?, ?, default, default)";
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, msg.getContent());
-			pstmt.setString(2, msg.getWriter());
-	 
-			pstmt.executeUpdate();
-			
-			pstmt.close();
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
-	
-	public void updateMessage(Message msg) {
-		String sql = "update message set content=?, writer=?, modtime=now() where mid=?";
-		try {
-			PreparedStatement pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, msg.getContent());
-			pstmt.setString(2, msg.getWriter());
-			pstmt.setInt(3, msg.getMid());
+			pstmt.setString(1, user.getUid());
+			pstmt.setString(2, user.getPwd());
+			pstmt.setString(3, user.getUname());
+			pstmt.setString(4, user.getemail());
 			
 			pstmt.executeUpdate();
 			
@@ -122,11 +104,14 @@ public class MessageDao {
 		}
 	}
 	
-	public void deleteMessage(int mid) {
-		String sql = "update message set isDeleted=1 where mid=?";
+	public void updateUser(User user) {
+		String sql = "update users set pwd=?, uname=?, email=? where uid=?";
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, mid);
+			pstmt.setString(1, user.getPwd());
+			pstmt.setString(2, user.getUname());
+			pstmt.setString(3, user.getemail());
+			pstmt.setString(4, user.getUid());
 			
 			pstmt.executeUpdate();
 			
@@ -136,5 +121,20 @@ public class MessageDao {
 			e.printStackTrace();
 		}
 	}
-}	
+	
+	public void deleteUser(String uid) {
+		String sql = "update users set isDeleted=1 where uid=?";
+		try {
+			PreparedStatement pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, uid);
+			
+			pstmt.executeUpdate();
+			
+			pstmt.close();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+}
 

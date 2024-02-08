@@ -1,5 +1,7 @@
 package mysql.sec05_Message;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 public class MessageTest {
@@ -18,7 +20,7 @@ public class MessageTest {
 //		msgDao.updateMessage(msg);
 		
 		msgDao.deleteMessage(113);
-
+		
 	
 		List<Message> list = msgDao.getMessageListByWriter("브라이언");
 		list.forEach(x-> System.out.println(x));
